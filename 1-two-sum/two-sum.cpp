@@ -1,4 +1,3 @@
-
 class Solution {
 public:
     std::vector<int> twoSum(std::vector<int>& nums, int target) {
@@ -21,6 +20,6 @@ public:
         }
 
         // If no two numbers add up to the target, return an empty vector
-        return {};
-    }
+        return {};
+    }
 };
