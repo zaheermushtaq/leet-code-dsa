@@ -1,16 +1,14 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        map<char,int> freq;
+        map<char,int> freq1,freq2;
         for(char c : s){
-            freq[c]++;
+            freq1[c]++;
         }
         for(char c : t){
-            freq[c]--;
+            freq2[c]++;
         }
-        for(auto &p : freq){
-            if(p.second != 0) return false;
-        }
-        return true;
+        if(freq1==freq2) return true;
+        else  return false;
     }
 };
