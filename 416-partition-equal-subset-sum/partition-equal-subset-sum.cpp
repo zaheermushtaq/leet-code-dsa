@@ -8,17 +8,16 @@ public:
         }
         if(t%2!=0) return false;
         else t=t/2;
-        vector<vector<bool>> dp(n,vector<bool> (t+1,0));
-        for(int i=0;i<n;i++) dp[i][0]=true;
-        if(nums[0]<=t) dp[0][nums[0]]=true;
-        for(int i=1;i<n;i++){
-            for(int j=1;j<=t;j++){
-                bool x=dp[i-1][j];
-                bool y=false;
-                if(j>=nums[i]) y=dp[i-1][j-nums[i]];
-                dp[i][j] = x|y;
+        vector<bool> dp(t + 1, false);
+        dp[0] = true;  // sum = 0 is always possible
+        
+        for (int num : nums) {
+            // update backwards to avoid reusing the same number twice
+            for (int j = t; j >= num; j--) {
+                if (dp[j - num]) dp[j] = true;
             }
         }
-        return dp[n-1][t];
+        
+        return dp[t];
     }
 };
